@@ -10,7 +10,6 @@ function LoadMessage(message){
 	message.text = message.text.replace("<@U09PY7KGA>:","")
 	message.text = message.text.replace("<@U09PY7KGA> ","")
 	message.text = message.text.replace("<@U09PY7KGA>","")
-	console.log("data:::"+message.text)
 	return new Message(message)
 }
 
@@ -38,8 +37,14 @@ function Message (message) {
             var mEvent = ""
             for (var i = 0; i < calendar.events.length; i++) {
                 var event = calendar.events[i];
-                var start = event.start.dateTime || event.start.date;
-                mEvent = mEvent + '時間：'+start+' \n地點：'+event.location+' \n事件：'+ event.summary + '\n\n';
+                var startDate = new Date(event.start.dateTime || event.start.date)
+                var month = startDate.getMonth() + 1
+                var day = startDate.getDate()
+                var hour = startDate.getHours() + 8
+                var minutes = startDate.getMinutes()
+                console.log(startDate)
+                mEvent = mEvent + '時間：' + month + '月' + day + '日  ' + hour + '點' + minutes + '分'
+                    +' \n地點：'+event.location+' \n事件：'+ event.summary + '\n\n';
             }
             this.mText = mEvent
             break;
