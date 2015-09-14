@@ -42,8 +42,9 @@ function Message (message) {
                 var day = startDate.getDate()
                 var hour = startDate.getHours() + 8
                 var minutes = startDate.getMinutes()
+                var iDays  =  parseInt(Math.abs(startDate  -  new Date())  /  1000  /  60  /  60  /24)
                 
-                mEvent = mEvent + '時間：' + month + '月' + day + '日' + week[startDate.getDay()] + '  ' + hour + '點' + minutes + '分'
+                mEvent = mEvent + '時間：' + month + '月' + day + '日' + week[startDate.getDay()] + '  ' + hour + '點' + minutes + '分' + '   距離現在： ' + iDays + '天'
                     +' \n地點：'+event.location+' \n事件：'+ event.summary + '\n\n';
             }
             this.mText = mEvent
