@@ -1,6 +1,6 @@
 var help = require('./util/help')
 var calendar = require('./calendar/calendar');
-var week = ['(日)','(ㄧ)','(二)','(三)','(四)','(五)','(六)']
+var week = ['(日)','(一)','(二)','(三)','(四)','(五)','(六)']
 module.exports = {
 	load : LoadMessage
 }
@@ -19,7 +19,7 @@ function Message (message) {
 
     if (message.text.indexOf("官網") > -1) this.mText = "http://erickson-makotoki.github.io/Image_Page/"
 
-    if (message.text.indexOf("粉專") > -1 || message.text.indexOf("粉絲專頁") > -1) this.mText = "https://www.facebook.com/yzuitac?fref=ts"
+    if (message.text.indexOf("粉專") > -1 || message.text.indexOf("粉絲專頁") > -1) this.mText = "https://www.facebook.com/yzuitac?fref=ts"
 
     if (message.text.indexOf("email") > -1) this.mText = "itac.yzu.org@gmail.com"
 
@@ -29,7 +29,7 @@ function Message (message) {
 
     switch (command[0].toLowerCase()){
 
-    	case "help": 
+    	case "help":
     		this.mText = help
     	        break;
 
@@ -40,12 +40,15 @@ function Message (message) {
                 var startDate = new Date(event.start.dateTime || event.start.date)
                 var month = startDate.getMonth() + 1
                 var day = startDate.getDate()
-                var hour = startDate.getHours() + 8
+                var hour = startDate.getHours()
                 var minutes = startDate.getMinutes()
                 var iDays  =  parseInt(Math.abs(startDate  -  new Date())  /  1000  /  60  /  60  /24)
-                
-                mEvent = mEvent + '時間：' + month + '月' + day + '日' + week[startDate.getDay()] + '  ' + hour + '點' + minutes + '分' + '   距離現在： ' + iDays + '天'
-                    +' \n地點：'+event.location+' \n事件：'+ event.summary + '\n\n';
+				var location = event.location
+				if(location == undefined){
+					location = "尚未決定"
+				}
+                mEvent = mEvent + '時間：' + month + '月' + day + '日' + week[startDate.getDay()] + '  ' + hour + '點' + minutes + '分  ' +'*剩下'+ iDays + '天*'
+                    +' \n地點：'+location+' \n事件：'+ event.summary + '\n\n';
             }
             this.mText = mEvent
             break;
