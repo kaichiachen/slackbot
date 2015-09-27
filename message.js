@@ -1,4 +1,5 @@
 var help = require('./util/help')
+var user = require('./util/user')
 var calendar = require('./calendar/calendar');
 var week = ['(日)','(一)','(二)','(三)','(四)','(五)','(六)']
 module.exports = {
@@ -33,7 +34,7 @@ function Message (message) {
     		this.mText = help
     	        break;
 
-	case "calendar":
+	    case "calendar":
             var mEvent = ""
             for (var i = 0; i < calendar.events.length; i++) {
                 var event = calendar.events[i];
@@ -53,9 +54,19 @@ function Message (message) {
             this.mText = mEvent
             break;
 
-	case "echo":
+	    case "echo":
             var say = message.text.split('echo ');
             this.mText = say[1]
+            break;
+        case "whoami":
+            var username = message.text.split('whoami ')
+            if(username[1] == "steven5538"){
+                this.mText = "不要問，你會怕"
+            } else if(username == undefined || user[username[1]] == undefined){
+                this.mText = "查無此人"
+            } else {
+                this.mText = username[1] + "是" + user[username[1]]
+            }
             break;
     }
 
