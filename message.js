@@ -11,6 +11,7 @@ function LoadMessage(message){
 	message.text = message.text.replace("<@U09PY7KGA>:","")
 	message.text = message.text.replace("<@U09PY7KGA> ","")
 	message.text = message.text.replace("<@U09PY7KGA>","")
+    message.text = message.text.trim()
 	return new Message(message)
 }
 
@@ -65,7 +66,7 @@ function Message (message) {
             } else if(username == undefined || user[username[1]] == undefined){
                 this.mText = "查無此人"
             } else {
-                this.mText = username[1] + "是" + user[username[1]]
+                this.mText = username[1] + " 是 " + user[username[1]]
             }
             break;
     }

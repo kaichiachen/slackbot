@@ -3,9 +3,20 @@ module.exports = {
 	"ericwu":"冠賢",
 	"andychen":"鍇嘉",
 	"ee830804":"志宇",
-	"kung-ming":"紀冠名",
+	"kuan-ming":"紀冠名",
 	"erickson":"秉倫",
 	"castielyu":"游智鈞",
 	"jhihsiying":"應芝曦",
-	"lens":"李佳縉"
+	"lens":"李佳縉",
+	"oscarkaiyi":"楷翊",
+	"jhihruei":"刺蝟",
+	"yaya84024":"黃靖雅",
+	"megshao":"宅劭",
+	"t2bee":"恒達",
+	"janejane":"陳妍臻",
+	"samuel":"宇軒",
+	"howardlo":"右鈞",
+	"renchen":"銘仁哥",
+	"jass":"慶棠",
+	"yanyiyi":"劉彥"
 }

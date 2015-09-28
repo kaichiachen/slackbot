@@ -20,5 +20,12 @@ slack.on('message', function(data) {
         message.SendMessage(function(data){
             slack.sendMsg(channel, data)
         })
+    } else {
+        var message = data.text.split(' echo ')
+        if(message[0] != undefined && message[1] != undefined){
+            message[0] = message[0].trim()
+            console.log(message[0].substr(2,message[0].length-3))
+            slack.sendMsg(message[0].substr(2,message[0].length-3), message[1].trim())
+        }
     }
 });
