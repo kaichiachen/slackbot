@@ -12,6 +12,7 @@ var slack = new slackAPI({
 slack.on('message', function(data) {
     var channel = data.channel
     console.log(data)
+	console.log("HI~~~")
     if(data.text.indexOf("<@U09PY7KGA>") > -1){
         var message = slackMessage.load({
             text: data.text,
